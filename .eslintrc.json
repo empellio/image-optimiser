@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "env": { "es2022": true, "node": true },
+  "parserOptions": { "sourceType": "module" },
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+  "plugins": ["@typescript-eslint"],
+  "overrides": [
+    {
+      "files": ["**/*.ts"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": { "project": false }
+    }
+  ],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off"
+  }
+}
+
+

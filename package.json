@@ -1,0 +1,114 @@
+{
+  "name": "@empellio/image-optimizer",
+  "version": "0.1.0",
+  "description": "Server-side image optimization middleware for Node.js (inspired by the Next.js Image API). Sharp-powered resizing, format conversion (AVIF, WebP, JPEG, PNG), HTTP cache headers, and pluggable caching (memory, disk, Redis).",
+  "sideEffects": false,
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run --reporter dot",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "format": "prettier -w .",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepare": "npm run build",
+    "demo:express": "tsx examples/express.ts",
+    "demo:fastify": "tsx examples/fastify.ts"
+  },
+  "keywords": [
+    "image",
+    "image-optimization",
+    "optimizer",
+    "resize",
+    "sharp",
+    "express",
+    "fastify",
+    "webp",
+    "avif",
+    "jpeg",
+    "png",
+    "cache"
+  ],
+  "author": "Empellio OSS",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/empellio/image-optimizer.git"
+  },
+  "homepage": "https://github.com/empellio/image-optimizer#readme",
+  "bugs": {
+    "url": "https://github.com/empellio/image-optimizer/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "got": "^14.4.7",
+    "lru-cache": "^11.1.0",
+    "sharp": "^0.33.5",
+    "zod": "^3.23.8"
+  },
+  "peerDependencies": {
+    "express": "^4.18.0 || ^5.0.0",
+    "fastify": "^4.0.0 || ^5.0.0",
+    "ioredis": "^5.3.0"
+  },
+  "peerDependenciesMeta": {
+    "express": {
+      "optional": true
+    },
+    "fastify": {
+      "optional": true
+    },
+    "ioredis": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.23",
+    "@types/node": "^20.19.9",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
+    "eslint": "^9.32.0",
+    "eslint-config-prettier": "^9.1.2",
+    "express": "^5.1.0",
+    "fastify": "^5.4.0",
+    "prettier": "^3.6.2",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2",
+    "vitest": "^2.1.9"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "format": [
+      "esm",
+      "cjs"
+    ],
+    "dts": true,
+    "clean": true,
+    "sourcemap": true,
+    "target": "node18",
+    "minify": false,
+    "outDir": "dist"
+  }
+}
